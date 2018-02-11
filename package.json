@@ -1,0 +1,27 @@
+{
+  "name": "socket-node-aws",
+  "version": "1.0.0",
+  "description": "A chat application built with node, mongodo, express, and socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris-daynes/socket-node-aws.git"
+  },
+  "author": "Chris Daynes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chris-daynes/socket-node-aws/issues"
+  },
+  "homepage": "https://github.com/chris-daynes/socket-node-aws#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dependable": "^1.1.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-promise-router": "^3.0.1",
+    "lodash": "^4.17.5"
+  }
+}
