@@ -10,6 +10,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+const passport = require('passport');
 
 container.resolve(function(users) {
 
@@ -51,5 +52,7 @@ container.resolve(function(users) {
     }))
 
     app.use(flash());
+    app.use(passport.initialize());
+    app.use(passport.session());
   }
 })
