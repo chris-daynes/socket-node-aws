@@ -13,8 +13,8 @@ const flash = require('connect-flash');
 
 container.resolve(function(users) {
 
-  mongoose.Promise = global.Promise();
-  mongoose.connect('mongodb://localhost/udemy', {useMongoClient: true});
+  mongoose.Promise = global.Promise;
+  mongoose.connect('mongodb://localhost/udemy');
 
   const app = SetupExpress();
 
