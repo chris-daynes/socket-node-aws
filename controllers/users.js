@@ -9,11 +9,19 @@ module.exports = function (_, passport, User) {
       router.get('/home', this.homePage);
 
 
+      router.post('/', User.LoginValidation, this.postLogin);
       router.post('/signup', User.SignUpValidation, this.postSignup);
-      router.post('/', this.postLogin);
     }, 
 
-    indexPage: (req, res) => res.render('index', {test: 'This is a test'}),
+    indexPage: (req, res) => {
+      const errors = req.flash('error');
+      return res.render('index', 
+      {
+        title: 'My App | login',
+        messages: errors,
+        hasErrors: errors.length > 0
+      });
+    },
 
     postLogin: passport.authenticate('local.login', {
       successRedirect: '/home',
@@ -25,7 +33,7 @@ module.exports = function (_, passport, User) {
       const errors = req.flash('error');
       return res.render('signup', 
         {
-          title: 'My App | login',
+          title: 'My App | SignUp',
           messages: errors,
           hasErrors: errors.length > 0
         });
