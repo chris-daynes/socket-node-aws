@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 
-container.resolve(function(users) {
+container.resolve(function(users, _) {
 
   mongoose.Promise = global.Promise;
   mongoose.connect('mongodb://localhost/udemy');
@@ -57,5 +57,7 @@ container.resolve(function(users) {
     app.use(flash());
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.locals._ = _;
   }
 })

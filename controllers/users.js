@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (_, passport) {
+module.exports = function (_, passport, User) {
 
   return {
     SetRouting: function(router) {
@@ -9,12 +9,20 @@ module.exports = function (_, passport) {
       router.get('/home', this.homePage);
 
 
-      router.post('/signup', this.postSignup)
+      router.post('/signup', User.SignUpValidation, this.postSignup)
     }, 
 
     indexPage: (req, res) => res.render('index', {test: 'This is a testttttt'}),
 
-    getSignUp: (req, res) => res.render('signup'),
+    getSignUp: (req, res) => {
+      const errors = req.flash('error');
+      return res.render('signup', 
+        {
+          title: 'My App | login',
+          messages: errors,
+          hasErrors: errors.length > 0
+        });
+    },
 
     postSignup: passport.authenticate('local.signup', {
       successRedirect: '/home',
