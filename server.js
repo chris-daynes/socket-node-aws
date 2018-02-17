@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 
-container.resolve(function(users, _) {
+container.resolve(function(users, _, admin) {
 
   mongoose.Promise = global.Promise;
   mongoose.connect('mongodb://localhost/udemy');
@@ -30,6 +30,7 @@ container.resolve(function(users, _) {
     //Setup router
     const router = require('express-promise-router')();
     users.SetRouting(router);
+    admin.SetRouting(router);
   
     app.use(router);
   }
