@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
   facebook: {type: String, default: ''},
   fbtokens: Array,
   google: {type: String, default: ''},
-  googleTokens: Array
 })
 
 userSchema.methods.encryptPassword = function(password) {
